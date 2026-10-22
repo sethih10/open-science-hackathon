@@ -1,12 +1,14 @@
 # FragPlace
 
-FragPlace finds the nearest stable, non-recombining final state of a dissociated adsorbate. When a molecule AB breaks apart on a surface, the product A\* + B\* is not one structure but many: fragments placed too close recombine on relaxation, and fragments placed too far apart miss their lateral interaction, which shifts the reaction energy and the end point of every barrier search. FragPlace targets the nearest state that stays dissociated.
+**When a molecule breaks apart on a surface, where do its pieces end up?** FragPlace finds the closest arrangement in which the two fragments stay adsorbed without bonding back together: the end point for computing reaction energies and barriers.
 
-It is a Claude Code plugin. LLM agents plan and critique, deterministic tools do every calculation, and the researcher decides at each checkpoint, so every search is systematic, auditable and reproducible.
+When a molecule AB dissociates, its fragments are adsorbed, and they can sit in many arrangements. Placed too close, they re-form the molecule on relaxation. Placed far apart, they are stable, but that is not where the reaction leaves them: a bond breaks with the fragments side by side, so the barrier and the reaction energy belong to the nearest stable arrangement, including how strongly the fragments affect each other there. FragPlace searches for that state systematically, nearest first, and also reports how often near pairs recombine and the lateral interaction between the fragments.
+
+FragPlace is a Claude Code plugin. AI agents make the judgements but never do arithmetic or move atoms: deterministic tools do every calculation, a researcher approves each critical step, and every message, decision and file is saved under whoever made it, so a study can be audited and rerun.
 
 ![FragPlace overview](figures/figure1.png)
 
-*(a) Possible final states of H₂O\* → OH\* + H\* on NaCl(001): recombined, the target, and distant. (b) The Solution Planner, the only agent that speaks to the researcher, directs specialist agents through six stages run by deterministic tools, with checkpoints for the researcher, ending in the nearest validated final state.*
+*(a) Possible final states of H₂O\* → OH\* + H\* on NaCl(001): recombined, the target, and distant. (b) The Solution Planner, the only agent that speaks to the researcher, directs specialist agents (purple) through six stages run by deterministic tools (blue), with researcher checkpoints (salmon), ending in the nearest validated final state.*
 
 ## How to use
 
@@ -15,7 +17,7 @@ It is a Claude Code plugin. LLM agents plan and critique, deterministic tools do
 **1. Install, once**
 
 ```bash
-git clone https://github.com/sethih10/open-science-hackathon && cd open-science-hackathon
+git clone https://github.com/sethih10/osi-hackathon && cd open-science-hackathon
 python3 -m venv .venv
 .venv/bin/pip install -e ".[structures,agents,dev,figures]"
 .venv/bin/pip install mace-torch chgnet        # the machine-learned potentials
