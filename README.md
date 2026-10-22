@@ -17,7 +17,7 @@ FragPlace is a Claude Code plugin. AI agents make the judgements but never do ar
 **1. Install, once**
 
 ```bash
-git clone https://github.com/sethih10/osi-hackathon && cd open-science-hackathon
+git clone https://github.com/sethih10/open-science-hackathon && cd open-science-hackathon
 python3 -m venv .venv
 .venv/bin/pip install -e ".[structures,agents,dev,figures]"
 .venv/bin/pip install mace-torch chgnet        # the machine-learned potentials
